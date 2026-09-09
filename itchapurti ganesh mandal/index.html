@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>बारामतीचा इच्छापूर्ती गणेश मंडळ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF2E4;
+    --cream-deep:#F2E5CE;
+    --maroon:#6E1E24;
+    --maroon-deep:#4E1218;
+    --saffron:#E48A2B;
+    --saffron-deep:#C96A18;
+    --gold:#B8862F;
+    --teal:#1F5C4F;
+    --ink:#2C1810;
+    --ink-soft:#5A4436;
+    --paper-line:rgba(110,30,36,0.16);
+    --shadow-soft: 0 18px 40px -20px rgba(78,18,24,0.35);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.brand,.nav-cta,.stat-num{
+    font-family:'Baloo 2','Noto Sans Devanagari',sans-serif;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  section{position:relative;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- scalloped divider (marigold garland motif) ---------- */
+  .scallop{
+    height:26px;
+    width:100%;
+    background-repeat:repeat-x;
+    background-size:34px 26px;
+  }
+  .scallop-down{
+    background-image:radial-gradient(circle at 17px 0, transparent 15px, var(--maroon) 15.5px);
+  }
+  .scallop-up-cream{
+    background-image:radial-gradient(circle at 17px 26px, transparent 15px, var(--cream) 15.5px);
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    background:var(--maroon-deep);
+    color:#F6E3C4;
+    font-size:0.85rem;
+    letter-spacing:0.02em;
+  }
+  .topbar .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:8px 28px;gap:12px;flex-wrap:wrap;
+  }
+
+  /* ---------- nav ---------- */
+  header.nav{
+    background:var(--cream);
+    border-bottom:1px solid var(--paper-line);
+    position:sticky;top:0;z-index:50;
+  }
+  /* WITH THIS: */
+  .nav .wrap{
+    display: flex;
+    flex-direction: column;       /* Places heading on top and menu below */
+    align-items: center;          /* Centers everything horizontally */
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 28px;
+  }
+  .brand{
+    display: flex;
+    align-items: center;
+    justify-content: center;      /* Centers logo and title */
+    gap: 14px;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--maroon);
+    text-align: center;
+  }
+  .brand-mark{
+    width: 44px;
+    height: 44px;
+    flex: none;
+    border-radius: 50%;
+    object-fit: contain;
+  }
+  .brand small{
+    display: block;
+    font-family: 'Noto Sans Devanagari';
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.03em;
+    text-align: center;
+  }
+  nav.links{
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    justify-content: center;      /* Centers the navigation links */
+    flex-wrap: wrap;
+  }
+  nav.links a::after{
+    content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;
+    background:var(--saffron-deep);transition:width .25s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--maroon);color:#FCE9C7;
+    padding:10px 20px;border-radius:999px;font-weight:600;font-size:0.95rem;
+    box-shadow:var(--shadow-soft);
+  }
+  .menu-btn{
+    display:none;background:none;border:none;cursor:pointer;
+    width:38px;height:38px;position:relative;
+  }
+  .menu-btn span{
+    position:absolute;left:7px;right:7px;height:2.5px;background:var(--maroon);
+    transition:transform .25s ease, opacity .25s ease;
+  }
+  .menu-btn span:nth-child(1){top:12px;}
+  .menu-btn span:nth-child(2){top:19px;}
+  .menu-btn span:nth-child(3){top:26px;}
+  .menu-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .menu-btn.open span:nth-child(2){opacity:0;}
+  .menu-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 82% 18%, rgba(228,138,43,0.16), transparent 45%),
+      var(--cream);
+    padding:64px 0 40px;
+  }
+  .hero .wrap{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;
+  }
+  .eyebrow-plain{
+    color:var(--saffron-deep);font-weight:600;font-size:1.02rem;margin-bottom:10px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem,4.6vw,3.6rem);
+    color:var(--maroon);
+    margin:0 0 18px;
+    line-height:1.18;
+    font-weight:800;
+  }
+  .hero p.lead{
+    font-size:1.12rem;color:var(--ink-soft);max-width:52ch;margin:0 0 28px;
+  }
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--saffron-deep);color:#fff;padding:14px 30px;border-radius:10px;
+    font-weight:600;font-size:1rem;box-shadow:var(--shadow-soft);
+    border:none;cursor:pointer;
+  }
+  .btn-ghost{
+    border:1.5px solid var(--maroon);color:var(--maroon);
+    padding:14px 30px;border-radius:10px;font-weight:600;font-size:1rem;
+  }
+  .hero-stats{display:flex;gap:34px;margin-top:40px;flex-wrap:wrap;}
+  .stat-num{font-size:1.8rem;font-weight:700;color:var(--maroon);}
+  .stat-label{font-size:0.85rem;color:var(--ink-soft);}
+
+ /* WITH THIS: */
+.hero-art {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.hero-art img {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 28px rgba(78, 18, 24, 0.22));
+}
+  .countdown-card{
+    margin-top:26px;background:#fff;border:1px solid var(--paper-line);
+    border-radius:16px;padding:18px 22px;box-shadow:var(--shadow-soft);
+    display:flex;gap:22px;align-items:center;flex-wrap:wrap;
+  }
+  .countdown-card .label{font-weight:600;color:var(--maroon);font-size:0.95rem;}
+  .countdown-grid{display:flex;gap:14px;}
+  .countdown-grid div{text-align:center;}
+  .countdown-grid .num{font-size:1.5rem;font-weight:700;color:var(--maroon-deep);font-family:'Baloo 2';}
+  .countdown-grid .unit{font-size:0.7rem;color:var(--ink-soft);}
+
+  /* ---------- section headers ---------- */
+  .section-head{max-width:640px;margin:0 auto 44px;text-align:center;}
+  .section-head h2{
+    font-size:clamp(1.8rem,3vw,2.35rem);color:var(--maroon);margin:0 0 12px;
+  }
+  .section-head p{color:var(--ink-soft);font-size:1.02rem;margin:0;}
+  .band{padding:78px 0;}
+  .band.maroon{background:var(--maroon);color:#F6E3C4;}
+  .band.maroon .section-head h2{color:#FCE9C7;}
+  .band.maroon .section-head p{color:#E7C9A5;}
+  .band.cream-deep{background:var(--cream-deep);}
+
+  /* ---------- about ---------- */
+  .about-grid{
+    display:grid;grid-template-columns:0.9fr 1.1fr;gap:52px;align-items:center;
+  }
+  .about-grid h2{font-size:2rem;color:var(--maroon);margin-top:0;}
+  .about-grid p{color:var(--ink-soft);}
+  .about-figure{
+    border-radius:20px;overflow:hidden;box-shadow:var(--shadow-soft);
+    aspect-ratio:4/5;background:linear-gradient(160deg,var(--saffron) 0%,var(--maroon) 100%);
+    position:relative;
+  }
+  .about-figure svg{position:absolute;inset:0;width:100%;height:100%;}
+  .mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px;}
+  .mini-stats .card{
+    background:#fff;border:1px solid var(--paper-line);border-radius:14px;padding:18px 14px;text-align:center;
+  }
+  .mini-stats .num{font-family:'Baloo 2';font-size:1.5rem;color:var(--saffron-deep);font-weight:700;}
+  .mini-stats .txt{font-size:0.82rem;color:var(--ink-soft);}
+
+  /* ---------- aarti timeline ---------- */
+  .timeline{max-width:640px;margin:0 auto;}
+  .tl-item{
+    display:grid;grid-template-columns:64px 1fr;gap:22px;position:relative;padding-bottom:34px;
+  }
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";position:absolute;left:31px;top:52px;bottom:0;width:2px;
+    background:rgba(246,227,196,0.35);
+  }
+  .tl-item:last-child::before{display:none;}
+  .tl-dot{
+    width:64px;height:64px;border-radius:50%;background:rgba(246,227,196,0.12);
+    border:1.5px solid rgba(246,227,196,0.5);
+    display:flex;align-items:center;justify-content:center;font-family:'Baloo 2';
+    font-weight:700;color:#FCE9C7;font-size:0.95rem;text-align:center;
+  }
+  .tl-body h3{margin:2px 0 6px;font-size:1.15rem;color:#FCE9C7;}
+  .tl-body p{margin:0;color:#E7C9A5;font-size:0.95rem;}
+
+  /* ---------- gallery ---------- */
+  .gallery-tabs{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .tab-btn{
+    padding: 8px 22px;
+    border-radius: 999px;
+    border: 1.5px solid var(--maroon);
+    background: #fff;
+    color: var(--maroon);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all .25s ease;
+  }
+  .tab-btn:hover{
+    background: var(--cream-deep);
+  }
+  .tab-btn.active{
+    background: var(--maroon);
+    color: #FCE9C7;
+  }
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));gap:16px;
+  }
+  .gallery-grid figure{
+    margin:0;border-radius:14px;overflow:hidden;position:relative;cursor:pointer;
+    background:#4E1218;aspect-ratio:4/3;
+    box-shadow:0 6px 18px rgba(78,18,24,0.14);
+  }
+  .gallery-grid figure img, .gallery-grid figure video{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .35s ease;
+  }
+  .gallery-grid figure:hover img, .gallery-grid figure:hover video{transform:scale(1.06);}
+  .play-badge{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 52px;
+    height: 52px;
+    background: rgba(110, 30, 36, 0.88);
+    border: 2px solid #FCE9C7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FCE9C7;
+    font-size: 1.25rem;
+    pointer-events: none;
+    transition: transform .25s ease, background .25s ease;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+    z-index: 1;
+  }
+  .gallery-grid figure:hover .play-badge{
+    transform: translate(-50%, -50%) scale(1.15);
+    background: var(--saffron-deep);
+  }
+  .gallery-grid figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:12px 14px;
+    background:linear-gradient(0deg,rgba(44,14,18,0.85),transparent);
+    color:#fff;font-size:0.85rem;font-weight:600;
+    opacity:0;transform:translateY(6px);transition:opacity .25s ease, transform .25s ease;
+    z-index: 2;
+  }
+  .gallery-grid figure:hover figcaption{opacity:1;transform:translateY(0);}
+
+  .lightbox{
+    position:fixed;inset:0;background:rgba(30,10,12,0.88);z-index:200;
+    display:none;align-items:center;justify-content:center;padding:24px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox-inner{max-width:720px;width:92%;background:var(--cream);border-radius:18px;padding:22px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,0.5);}
+  .lightbox-inner img, .lightbox-inner video{width:100%;max-height:72vh;border-radius:12px;object-fit:contain;display:block;margin:0 auto;}
+  .lightbox-close{
+    margin-top:16px;background:var(--maroon);color:#fff;border:none;border-radius:8px;
+    padding:10px 24px;font-weight:600;cursor:pointer;font-size:0.95rem;
+  }
+
+  /* ---------- events ---------- */
+  .events-list{display:grid;gap:16px;}
+  .event-row{
+    display:grid;grid-template-columns:110px 1fr auto;gap:20px;align-items:center;
+    background:#fff;border:1px solid var(--paper-line);border-radius:14px;
+    padding:18px 22px;
+  }
+  .event-date{
+    font-family:'Baloo 2';font-weight:700;color:var(--maroon);text-align:center;
+    border-right:1px solid var(--paper-line);padding-right:16px;
+  }
+  .event-date .day{font-size:1.5rem;line-height:1;}
+  .event-date .mon{font-size:0.78rem;color:var(--ink-soft);font-weight:500;}
+  .event-title{font-weight:600;color:var(--ink);}
+  .event-time{font-size:0.85rem;color:var(--ink-soft);}
+  .event-tag{
+    background:var(--cream-deep);color:var(--maroon);font-size:0.78rem;font-weight:600;
+    padding:6px 14px;border-radius:999px;white-space:nowrap;
+  }
+
+  /* ---------- donation ---------- */
+  .donate-wrap{
+    display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;
+  }
+  .donate-card{
+    background:#fff;border:1px solid var(--paper-line);border-radius:18px;padding:30px;
+    box-shadow:var(--shadow-soft);
+  }
+  .donate-card h3{margin-top:0;color:var(--maroon);}
+  .qr-box{
+    width:150px;height:150px;background:var(--cream-deep);border-radius:12px;
+    display:flex;align-items:center;justify-content:center;margin:14px 0;
+    border:1px dashed var(--gold);
+  }
+  .bank-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--paper-line);font-size:0.94rem;}
+  .bank-row:last-child{border-bottom:none;}
+  .bank-row span:first-child{color:var(--ink-soft);}
+  .bank-row span:last-child{font-weight:600;}
+
+  form.donate-form{display:grid;gap:14px;}
+  form.donate-form input, form.donate-form select{
+    padding:13px 14px;border-radius:10px;border:1px solid var(--paper-line);
+    font-family:inherit;font-size:0.98rem;background:#fff;
+  }
+  .amount-chips{display:flex;gap:10px;flex-wrap:wrap;}
+  .amount-chips button{
+    padding:10px 18px;border-radius:999px;border:1.5px solid var(--maroon);    background:#fff;color:var(--maroon);font-weight:600;cursor:pointer;
+  }
+  .amount-chips button.active{background:var(--maroon);color:#fff;}
+  .form-note{font-size:0.82rem;color:var(--ink-soft);}
+
+  /* ---------- contact / footer ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
+  .contact-grid h2{color:var(--maroon);margin-top:0;}
+  .contact-list{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:16px;}
+  .contact-list li{display:flex;gap:14px;align-items:flex-start;}
+  .contact-list .ic{
+    width:38px;height:38px;flex:none;border-radius:10px;background:var(--cream-deep);
+    display:flex;align-items:center;justify-content:center;color:var(--saffron-deep);
+  }
+  .map-box{
+    border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:var(--cream-deep);
+  }
+  .map-box svg{width:100%;height:100%;}
+
+  footer{background:var(--maroon-deep);color:#E7C9A5;padding:36px 0 24px;font-size:0.9rem;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+
+  
+     @media (max-width: 860px) {
+    /* Side padding for mobile */
+    .wrap {
+      padding: 0 16px;
+    }
+
+    /* Top red announcement bar */
+    .topbar .wrap {
+      flex-direction: column;
+      text-align: center;
+      gap: 2px;
+      padding: 6px 12px;
+      font-size: 0.76rem;
+    }
+
+    /* Navbar: Logo on left, Hamburger on right */
+    .nav .wrap {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+    }
+    .brand {
+      font-size: 1.05rem;
+      gap: 10px;
+      text-align: left;
+      max-width: calc(100% - 48px);
+    }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+    }
+    .brand small {
+      font-size: 0.65rem;
+      text-align: left;
+    }
+    .menu-btn {
+      display: block;
+      flex-shrink: 0;
+    }
+
+    /* Collapsible mobile menu */
+    nav.links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      max-height: 0;
+      overflow: hidden;
+      border-bottom: 1px solid var(--paper-line);
+      transition: max-height 0.3s ease;
+    }
+    nav.links.open {
+      max-height: 420px;
+    }
+    nav.links a {
+      padding: 14px 20px;
+      width: 100%;
+      border-bottom: 1px solid var(--paper-line);
+    }
+
+    /* Hero section: scale image & heading to fit mobile screen */
+    .hero {
+      padding: 24px 0 32px;
+    }
+    .hero .wrap {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .hero-art {
+      order: -1;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+    .hero-art img {
+      max-height: 220px;
+      width: auto;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 1.75rem;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+    .hero p.lead {
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    /* 3 stats in equal columns */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .stat-num {
+      font-size: 1.35rem;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+    }
+
+    /* Centered countdown card */
+    .countdown-card {
+      justify-content: center;
+      text-align: center;
+      padding: 14px 16px;
+    }
+    .countdown-grid {
+      gap: 12px;
+    }
+
+    /* Other content sections */
+    .band {
+      padding: 44px 0;
+    }
+    .about-grid, .donate-wrap, .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .gallery-grid figure {
+      aspect-ratio: 1 / 1;
+    }
+    .event-row {
+      grid-template-columns: 1fr;
+      text-align: left;
+      gap: 8px;
+    }
+    .event-date {
+      border-right: none;
+      padding-right: 0;
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>🚩 गणेशोत्सव २०२६ — स्थापना: भाद्रपद शुद्ध चतुर्थी</span>
+    <span>📞 संपर्क: 8468851575</span>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#home" class="brand">
+      <img class="brand-mark" src="images/ganesh.png" alt="लोगो">
+      <span>बारामतीचा इच्छापूर्ती गणेश मंडळ
+        <small>स्था.२०१२ · सार्वजनिक गणेशोत्सव</small>
+      </span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="मेनू उघडा">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="links" id="navLinks">
+      <a href="#home">मुख्यपृष्ठ</a>
+      <a href="#about">मंडळाबद्दल</a>
+      <a href="#utsav">उत्सव वेळापत्रक</a>
+      <a href="#gallery">फोटो गॅलरी</a>
+      <a href="#events">कार्यक्रम</a>
+      <a href="#contact">संपर्क</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow-plain">गणपती बाप्पा मोरया 🙏</p>
+      <h1>आमच्या मंडळाच्या<br>गणेशोत्सवात आपले<br>मनःपूर्वक स्वागत आहे</h1>
+      <p class="lead">दरवर्षीप्रमाणे यंदाही आमचे मंडळ मोठ्या उत्साहात आणि भक्तिभावाने गणेशोत्सव साजरा करत आहे. आरती, सांस्कृतिक कार्यक्रम आणि प्रसादाचा लाभ घेण्यासाठी सर्वांना सहर्ष आमंत्रण.</p>
+    
+      <div class="hero-stats">
+        <div><div class="stat-num"> १५+</div><div class="stat-label">वर्षांची परंपरा</div></div>
+        <div><div class="stat-num">११</div><div class="stat-label">दिवसांचा उत्सव</div></div>
+        <div><div class="stat-num">५०००+</div><div class="stat-label">भाविक दरवर्षी</div></div>
+      </div>
+      <div class="countdown-card">
+        <span class="label">आगमनास अवधी</span>
+        <div class="countdown-grid" id="countdown">
+          <div><div class="num" id="cd-days">--</div><div class="unit">दिवस</div></div>
+          <div><div class="num" id="cd-hrs">--</div><div class="unit">तास</div></div>
+          <div><div class="num" id="cd-min">--</div><div class="unit">मिनिटे</div></div>
+          <div><div class="num" id="cd-sec">--</div><div class="unit">सेकंद</div></div>
+        </div>
+      </div>
+    </div>
+    <!-- REPLACE WITH THIS: -->
+<div class="hero-art">
+  <img src="images/ganesh.png" alt="गणपती बाप्पा">
+</div>
+  </div>
+</section>
+
+<div class="scallop scallop-down"></div>
+
+<section class="band" id="about">
+  <div class="wrap about-grid">
+    <div class="about-figure">
+      <img src="images/ganesh1.jpeg" alt="गणपती बाप्पाची भव्य मूर्ती" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+    </div>
+    <div>
+      <p class="eyebrow-plain">मंडळाबद्दल</p>
+      <h2>श्रद्धेने जपलेली परंपरा, एकतेने साजरी केलेली</h2>
+      <p>२०१२ साली काही तरुण मित्रांनी एकत्र येऊन आमच्या मंडळाची स्थापना केली. सुरुवातीला अवघ्या काही घरांपुरता मर्यादित असलेला हा उत्सव आज संपूर्ण परिसराला जोडणारा सार्वजनिक सोहळा बनला आहे. दरवर्षी आरास, सांस्कृतिक कार्यक्रम आणि सामाजिक उपक्रमांच्या माध्यमातून मंडळ परिसरातील नागरिकांना एकत्र आणते.</p>
+      <p>पर्यावरणपूरक गणेशोत्सव हे आमचे प्रमुख उद्दिष्ट असून, दरवर्षी शाडूच्या मातीपासून बनवलेल्या मूर्तीची प्रतिष्ठापना केली जाते.</p>
+      <div class="mini-stats">
+        <div class="card"><div class="num">१५+</div><div class="txt">वर्षांची वाटचाल</div></div>
+        <div class="card"><div class="num">१२</div><div class="txt">सामाजिक उपक्रम</div></div>
+        <div class="card"><div class="num">१००%</div><div class="txt">पर्यावरणपूरक मूर्ती</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="scallop scallop-up-cream" style="transform:rotate(180deg);"></div>
+
+<section class="band maroon" id="utsav">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>दैनंदिन आरती व उत्सव वेळापत्रक</h2>
+      <p>प्राणप्रतिष्ठापनेपासून विसर्जनापर्यंतचा दिनक्रम खालीलप्रमाणे</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">सकाळ</div>
+        <div class="tl-body">
+          <h3>काकड आरती</h3>
+          <p>सकाळी ६:३० — मंगल स्नान व सकाळची आरती</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">दुपार</div>
+        <div class="tl-body">
+          <h3>नैवेद्य व मध्यान्ह आरती</h3>
+          <p>दुपारी १२:३० — महानैवेद्य अर्पण व आरती</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">सायं.</div>
+        <div class="tl-body">
+          <h3>सांस्कृतिक कार्यक्रम</h3>
+          <p>सायंकाळी ७:०० — भजन, नाटिका व स्पर्धा</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">रात्र</div>
+        <div class="tl-body">
+          <h3>शेजारती</h3>
+          <p>रात्री ९:३० — दिवसाची अंतिम आरती</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>फोटो गॅलरी</h2>
+      <p>मागील वर्षांतील विसर्जन सोहळ्याच्या काही आठवणी</p>
+    </div>
+    <div class="gallery-tabs">
+      <button class="tab-btn active" data-filter="all">सर्व (All)</button>
+      <button class="tab-btn" data-filter="photo">📸 फोटो</button>
+      <button class="tab-btn" data-filter="video">🎥 व्हिडिओ</button>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <img id="lightboxImg" src="" alt="फोटो पूर्वावलोकन" style="width:100%;max-height:70vh;border-radius:12px;object-fit:contain;display:none;margin:0 auto;">
+    <video id="lightboxVideo" src="" controls playsinline style="width:100%;max-height:70vh;border-radius:12px;object-fit:contain;display:none;margin:0 auto;"></video>
+    <p id="lightboxCaption" style="color:var(--maroon-deep);font-weight:600;margin:14px 0 0;font-size:1.05rem;"></p>
+    <button class="lightbox-close" id="lightboxClose">बंद करा</button>
+  </div>
+</div>
+
+<section class="band cream-deep" id="events">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>यंदाचे कार्यक्रम</h2>
+      <p>उत्सवादरम्यान होणारे विशेष कार्यक्रम</p>
+    </div>
+    <div class="events-list">
+      <div class="event-row">
+        <div class="event-date"><div class="day">१४</div><div class="mon">सप्टेंबर</div></div>
+        <div><div class="event-title">प्राणप्रतिष्ठापना सोहळा</div><div class="event-time">सायंकाळी ७:०० वाजता</div></div>
+        <span class="event-tag">मुख्य कार्यक्रम</span>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="day">१५</div><div class="mon">सप्टेंबर</div></div>
+        <div><div class="event-title">रक्तदान शिबिर</div><div class="event-time">सकाळी १०:०० ते सायं. ४:००</div></div>
+        <span class="event-tag">सामाजिक उपक्रम</span>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="day">१७</div><div class="mon">सप्टेंबर</div></div>
+        <div><div class="event-title">बालचमूंची वेशभूषा स्पर्धा</div><div class="event-time">सायंकाळी ६:०० वाजता</div></div>
+        <span class="event-tag">स्पर्धा</span>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="day">२३</div><div class="mon">सप्टेंबर</div></div>
+        <div><div class="event-title">महाप्रसाद व सांस्कृतिक संध्या</div><div class="event-time">सायंकाळी ७:३० वाजता</div></div>
+        <span class="event-tag">विशेष</span>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="day">२५</div><div class="mon">सप्टेंबर</div></div>
+        <div><div class="event-title">गणपती विसर्जन मिरवणूक</div><div class="event-time">सकाळी ११:०० पासून</div></div>
+        <span class="event-tag">मुख्य कार्यक्रम</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="band cream-deep" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <h2>संपर्क साधा</h2>
+      <p style="color:var(--ink-soft);">काही प्रश्न असल्यास किंवा कार्यक्रमात सहभागी व्हायचे असल्यास खालील माहितीवर संपर्क साधा.</p>
+      <ul class="contact-list">
+        <li><span class="ic">📍</span><span>बारामतीचा इच्छापूर्ती गणेश मंडळ,भिगवण रोड, बारामती, महाराष्ट्र</span></li>
+        <li><span class="ic">📞</span><span><a href="tel:8468851575">8468851575</a></span></li>
+        <li>
+          <span class="ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C96A18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </span>
+          <span>
+            <strong>इन्स्टाग्राम:</strong> 
+            <a href="https://www.instagram.com/baramaticha_icchapurti_ganesh/" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);font-weight:700;text-decoration:underline;">@baramaticha_itchapurti_ganesh</a>
+          </span>
+        </li>
+      </ul>
+    </div>
+    <div class="map-box">
+      <svg viewBox="0 0 300 220">
+        <rect width="300" height="220" fill="#F2E5CE"/>
+        <path d="M0 140 Q80 100 150 140 T300 130" stroke="#B8862F" stroke-width="4" fill="none" opacity="0.6"/>
+        <path d="M0 180 Q100 150 200 180 T300 170" stroke="#6E1E24" stroke-width="3" fill="none" opacity="0.4"/>
+        <circle cx="150" cy="110" r="10" fill="#E48A2B"/>
+        <circle cx="150" cy="110" r="16" fill="none" stroke="#6E1E24" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© २०२६ इच्छापूर्ती भक्त मंडळ, बारामती. सर्व हक्क राखीव.</span>
+    <span>
+      <a href="https://www.instagram.com/baramaticha_itchapurti_ganesh/" target="_blank" rel="noopener noreferrer" style="color:#FCE9C7;text-decoration:underline;display:inline-flex;align-items:center;gap:6px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+        @baramaticha_itchapurti_ganesh
+      </a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menuBtn.classList.remove('open');
+    navLinks.classList.remove('open');
+  }));
+
+  // ---- Countdown to Ganesh Chaturthi (edit target date as needed) ----
+  const target = new Date('2026-09-14T09:00:00'); // गणपती आगमन — १४ सप्टेंबर
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    const now = new Date();
+    let diff = target - now;
+    if (diff < 0) diff = 0;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor(diff % 86400000 / 3600000);
+    const m = Math.floor(diff % 3600000 / 60000);
+    const s = Math.floor(diff % 60000 / 1000);
+    document.getElementById('cd-days').textContent = d;
+    document.getElementById('cd-hrs').textContent = pad(h);
+    document.getElementById('cd-min').textContent = pad(m);
+    document.getElementById('cd-sec').textContent = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // ---- Gallery: Photos & Videos + Filter Tabs + Lightbox ----
+  const galleryData = [
+    // Videos (विसर्जन व्हिडिओ)
+    {type: 'video', src: 'images/video1.mp4', cap: 'भव्य विसर्जन मिरवणूक जल्लोष — व्हिडिओ'},
+    {type: 'video', src: 'images/video2.mp4', cap: 'ढोल-ताशा गजर व बाप्पाची अंतिम आरती — व्हिडिओ'},
+    {type: 'video', src: 'images/video3.mp4', cap: 'विसर्जन मिरवणुकीतील भक्तिमय वातावरण — व्हिडिओ'},
+    {type: 'video', src: 'images/video4.mp4', cap: 'पुढच्या वर्षी लवकर या — भावपूर्ण निरोप सोहळा — व्हिडिओ'},
+
+    // Unique Photos (विसर्जन क्षणचित्रे - सर्व स्वतंत्र फोटो)
+    {type: 'photo', src: 'images/photo1.jpg', cap: 'विसर्जन मिरवणुकीत मंडळाचे कार्यकर्ते व बाप्पा'},
+    {type: 'photo', src: 'images/photo3.jpg', cap: 'विसर्जन दिवशी भाविकांचे बाप्पा चरणी दर्शन'},
+    {type: 'photo', src: 'images/photo2.jpg', cap: 'रात्रीची नयनरम्य विसर्जन मिरवणूक'},
+    {type: 'photo', src: 'images/photo4.jpg', cap: 'विसर्जन रथावर विराजमान बाप्पाची भव्य मूर्ती'},
+    {type: 'photo', src: 'images/photo5.jpg', cap: 'पारंपरिक वेशभूषेत विसर्जन दर्शन व पूजा'},
+    {type: 'photo', src: 'images/photo6.jpg', cap: 'पोलीस प्रशासन व कार्यकर्त्यांकडून बाप्पाची पूजा'},
+    {type: 'photo', src: 'images/photo9.jpg', cap: 'क्रेनद्वारे बाप्पाला भव्य पुष्पहार अर्पण'},
+    {type: 'photo', src: 'images/photo10.jpg', cap: 'मुख्य रस्त्यावरील रात्रीची विसर्जन मिरवणूक'},
+    {type: 'photo', src: 'images/photo11.jpg', cap: 'विसर्जन रथाची मनमोहक विद्युत रोषणाई'},
+    {type: 'photo', src: 'images/photo12.jpg', cap: 'पोलीस अधिकारी व मंडळाचे पदाधिकारी यांचा सत्कार'},
+    {type: 'photo', src: 'images/ganesh-murti.jpeg', cap: 'बारामतीचा इच्छापूर्ती गणेश — विसर्जन विशेष'},
+    {type: 'photo', src: 'images/ganesh1.jpeg', cap: 'विसर्जन मिरवणूक — रात्रीचा मनमोहक सोहळा'}
+  ];
+
+  const grid = document.getElementById('galleryGrid');
+  function renderGallery(filter = 'all') {
+    grid.innerHTML = '';
+    const filtered = filter === 'all' ? galleryData : galleryData.filter(item => item.type === filter);
+    filtered.forEach((g) => {
+      const fig = document.createElement('figure');
+      if (g.type === 'video') {
+        fig.innerHTML = `
+          <video src="${g.src}#t=0.5" preload="metadata" muted playsinline></video>
+          <div class="play-badge">▶</div>
+          <figcaption>${g.cap}</figcaption>
+        `;
+      } else {
+        fig.innerHTML = `
+          <img src="${g.src}" alt="${g.cap}" loading="lazy">
+          <figcaption>${g.cap}</figcaption>
+        `;
+      }
+      fig.addEventListener('click', () => openLightbox(g));
+      grid.appendChild(fig);
+    });
+  }
+  renderGallery('all');
+
+  // Filter tabs click
+  const tabBtns = document.querySelectorAll('.gallery-tabs .tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderGallery(btn.dataset.filter);
+    });
+  });
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxVideo = document.getElementById('lightboxVideo');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+
+  function openLightbox(g){
+    if (g.type === 'video') {
+      lightboxImg.style.display = 'none';
+      lightboxVideo.style.display = 'block';
+      lightboxVideo.src = g.src;
+      lightboxVideo.play().catch(() => {});
+    } else {
+      lightboxVideo.pause();
+      lightboxVideo.style.display = 'none';
+      lightboxVideo.src = '';
+      lightboxImg.style.display = 'block';
+      lightboxImg.src = g.src;
+    }
+    lightboxCaption.textContent = g.cap;
+    lightbox.classList.add('open');
+  }
+
+  function closeLightbox(){
+    lightboxVideo.pause();
+    lightboxVideo.src = '';
+    lightbox.classList.remove('open');
+  }
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+
+  // ---- Donation amount chips ----
+  const chips = document.querySelectorAll('#amountChips button');
+  const customAmt = document.getElementById('customAmt');
+  chips.forEach(btn => btn.addEventListener('click', () => {
+    chips.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    customAmt.value = '';
+  }));
+  document.getElementById('donateForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('submitLabel').textContent = 'धन्यवाद! 🙏';
+    setTimeout(() => document.getElementById('submitLabel').textContent = 'देणगी नोंदवा', 2500);
+  });
+</script>
+</body>
+</html>
